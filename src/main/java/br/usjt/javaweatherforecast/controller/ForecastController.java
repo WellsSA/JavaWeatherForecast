@@ -10,12 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.usjt.javaweatherforecast.model.Forecast;
 import br.usjt.javaweatherforecast.repository.ForecastRepository;
+import br.usjt.javaweatherforecast.service.ForecastService;
 
 @Controller
 public class ForecastController {
 
 	@Autowired
-	private ForecastRepository forecastRepository;
+	private ForecastService forecastService;
 	
 	@GetMapping("/weather")
 	public ModelAndView listForecast() {
@@ -23,7 +24,7 @@ public class ForecastController {
 		// no construtor: nome da página
 		ModelAndView mv = new ModelAndView("weather");
 		
-		List<Forecast> forecasts = forecastRepository.findAll();
+		List<Forecast> forecasts = forecastService.listarTodos();
 		
 		mv.addObject("forecasts", forecasts);
 		mv.addObject(new Forecast());
@@ -34,7 +35,7 @@ public class ForecastController {
 	
 	@PostMapping("/weather")
 	public String saveForecast (Forecast forecast) {
-		forecastRepository.save(forecast);
+		forecastService.salvar(forecast);
 		return "redirect:/weather";
 	}
 }

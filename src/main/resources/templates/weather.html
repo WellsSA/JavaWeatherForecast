@@ -16,6 +16,21 @@
 				<h1 class="panel-title">Alunos</h1>
 			</div>
 			<div class="panel-body">
+				<form class="form-inline" method="POST" th:object="${forecast}" th:action="@{/weather}" style="margin: 20px 0">
+					<div class="form-group">
+					
+						<input type="text" class="form-control" placeholder="Dia da Semana" th:field="*{weekDay}"/>
+						<input type="text" class="form-control" placeholder="Temperatura Mínima" th:field="*{minTemp}"/>
+						<input type="text" class="form-control" placeholder="Temperatura Máxima" th:field="*{maxTemp}"/>
+						<input type="text" class="form-control" placeholder="Humidade Relativa do Ar" th:field="*{humidity}"/>
+						<input type="datetime-local" class="form-control" placeholder="Data/Hora" th:field="*{dateTime}"/>
+						<input type="text" class="form-control" placeholder="Latitude" th:field="*{latitude}"/>
+						<input type="text" class="form-control" placeholder="Longitude" th:field="*{longitude}"/>
+						<input type="text" class="form-control" placeholder="Descrição" th:field="*{shortDescription}"/>
+						
+						<button type="submit" class="btn btn-primary">Adicionar</button>
+					</div>
+				</form>
 				<table class="table">
 					<thead>
 						<tr>
@@ -24,6 +39,9 @@
 							<th>Temperatura Máxima</th>
 							<th>Humidade Relativa do Ar</th>
 							<th>Descrição</th>
+							<th>Data/Hora</th>
+							<th>Latitude</th>
+							<th>Longitude</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -33,22 +51,12 @@
 							<td th:text="${forecast.maxTemp}"></td>
 							<td th:text="${forecast.humidity}"></td>
 							<td th:text="${forecast.shortDescription}"></td>
+							<td th:text="${forecast.dateTime}"></td>
+							<td th:text="${forecast.latitude}"></td>
+							<td th:text="${forecast.longitude}"></td>
 						</tr>					
 					</tbody>
 				</table>
-				<form class="form-inline" method="POST" th:object="${forecast}" th:action="@{/weather}" style="margin:
-20px 0">
-					<div class="form-group">
-					
-						<input type="text" class="form-control" placeholder="Dia da Semana" th:field="*{weekDay}"/>
-						<input type="text" class="form-control" placeholder="Temperatura Mínima" th:field="*{minTemp}"/>
-						<input type="text" class="form-control" placeholder="Temperatura Máxima" th:field="*{maxTemp}"/>
-						<input type="text" class="form-control" placeholder="Humidade Relativa do Ar" th:field="*{humidity}"/>
-						<input type="text" class="form-control" placeholder="Descrição" th:field="*{shortDescription}"/>
-						
-						<button type="submit" class="btn btn-primary">Adicionar</button>
-					</div>
-				</form>
 			</div>
 		</div>
 	</body>
