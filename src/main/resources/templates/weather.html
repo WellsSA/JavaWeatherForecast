@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Hello Spring Boot</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+			rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+			rel="stylesheet" />
+	</head>
+	<body>
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Alunos</h1>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Dia da Semana</th>
+							<th>Temperatura Mínima</th>
+							<th>Temperatura Máxima</th>
+							<th>Humidade Relativa do Ar</th>
+							<th>Descrição</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="forecast : ${forecasts}">
+							<td th:text="${forecast.weekDay}"></td>
+							<td th:text="${forecast.minTemp}"></td>
+							<td th:text="${forecast.maxTemp}"></td>
+							<td th:text="${forecast.humidity}"></td>
+							<td th:text="${forecast.shortDescription}"></td>
+						</tr>					
+					</tbody>
+				</table>
+				<form class="form-inline" method="POST" th:object="${forecast}" th:action="@{/weather}" style="margin:
+20px 0">
+					<div class="form-group">
+					
+						<input type="text" class="form-control" placeholder="Dia da Semana" th:field="*{weekDay}"/>
+						<input type="text" class="form-control" placeholder="Temperatura Mínima" th:field="*{minTemp}"/>
+						<input type="text" class="form-control" placeholder="Temperatura Máxima" th:field="*{maxTemp}"/>
+						<input type="text" class="form-control" placeholder="Humidade Relativa do Ar" th:field="*{humidity}"/>
+						<input type="text" class="form-control" placeholder="Descrição" th:field="*{shortDescription}"/>
+						
+						<button type="submit" class="btn btn-primary">Adicionar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

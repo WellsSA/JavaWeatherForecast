@@ -1,0 +1,3 @@
+insert into forecast (id, week_day, min_temp, max_temp, humidity, short_description) values (100, 'Segunda', 22.5, 32.2, 82, 'Ventos fortes');
+insert into forecast (id, week_day, min_temp, max_temp, humidity, short_description) values (101, 'Terça', 20.1, 28.3, 78, 'Ventos fortes');
+insert into forecast (id, week_day, min_temp, max_temp, humidity, short_description) values (102, 'Quarta', 18.9, 29.1, 81.3, 'Pancadas de chuva');
