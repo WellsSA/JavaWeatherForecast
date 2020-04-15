@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.usjt.javaweatherforecast.model.Forecast;
+import br.usjt.javaweatherforecast.model.WeekDay;
 import br.usjt.javaweatherforecast.repository.ForecastRepository;
 
 @Service
